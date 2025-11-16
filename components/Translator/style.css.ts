@@ -17,7 +17,8 @@ export const container = style({
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: "#FFFFFF",
-  padding: "20px",
+  margin: "40px 0", 
+  padding: "40px",
 });
 
 export const translatorBox = style({

@@ -14,6 +14,7 @@ export const header = style({
   width: "100%",
   minWidth: "320px",
   position: "fixed",
+  zIndex: 100,
 
   "@media": {
     [`screen and (max-width: ${screen.phone})`]: {
@@ -23,6 +24,7 @@ export const header = style({
 });
 
 export const wrapper = style({
+  backgroundColor: "#FFFFFF",
   height: "54px",
   margin: "0 auto",
   padding: "0 32px",
