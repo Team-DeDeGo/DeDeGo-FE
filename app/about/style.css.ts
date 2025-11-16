@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { screen } from "@/styles";
+import { screen, theme } from "@/styles";
 
 export const container = style({
   width: "100%",
@@ -45,18 +45,18 @@ export const mainTitle = style({
 
   "@media": {
     [`screen and (max-width: ${screen.phone})`]: {
-      fontSize: "24px"
+      fontSize: "24px",
     },
   },
 });
 
 export const icon = style({
-    "@media": {
+  "@media": {
     [`screen and (max-width: ${screen.phone})`]: {
       display: "none",
     },
   },
-})
+});
 
 export const aboutWrapper = style({
   display: "flex",
@@ -70,9 +70,9 @@ export const sectionTitle = style({
   fontWeight: "600",
   margin: 0,
 
-    "@media": {
+  "@media": {
     [`screen and (max-width: ${screen.phone})`]: {
-      fontSize: "24px"
+      fontSize: "24px",
     },
   },
 });
@@ -100,7 +100,7 @@ export const arrow = style({
 
 export const description = style({
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.65)",
+  color: `${theme.description}`,
   lineHeight: "1.7",
   margin: 0,
 });
@@ -117,16 +117,16 @@ export const ctaTitle = style({
   fontWeight: "600",
   margin: 0,
 
-    "@media": {
+  "@media": {
     [`screen and (max-width: ${screen.phone})`]: {
-      fontSize: "24px"
+      fontSize: "24px",
     },
   },
 });
 
 export const ctaDescription = style({
   fontSize: "15px",
-  color: "rgba(255, 255, 255, 0.65)",
+  color: `${theme.description}`,
   margin: 0,
   lineHeight: "1.6",
 });
@@ -204,9 +204,9 @@ export const footerColumnTitle = style({
 export const footerLink = style({
   fontSize: "14px",
   color: "rgba(255, 255, 255, 0.6)",
-  textDecoration: "none",
   transition: "color 0.2s",
   ":hover": {
     color: "#FFFFFF",
+    textDecoration: "underline",
   },
 });
