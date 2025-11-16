@@ -1,5 +1,14 @@
-import { style } from "@vanilla-extract/css";
+import { style, keyframes } from "@vanilla-extract/css";
 import { theme } from "@/styles";
+
+const FadeInOut = keyframes({
+  "0%, 80%, 100%": {
+    opacity: 0,
+  },
+  "40%": {
+    opacity: 1,
+  },
+});
 
 export const container = style({
   width: "100%",
@@ -105,6 +114,41 @@ export const outputText = style({
   padding: "30px",
 });
 
+export const loader = style({
+  display: "inline-flex",
+  gap: "8px",
+  alignItems: "center",
+  justifyContent: "center",
+
+  "::before": {
+    content: "",
+    width: "10px",
+    height: "10px",
+    borderRadius: "50%",
+    backgroundColor: "#999",
+    animation: `${FadeInOut} 1.4s infinite ease-in-out both`,
+    animationDelay: "-0.32s",
+  },
+
+  "::after": {
+    content: "",
+    width: "10px",
+    height: "10px",
+    borderRadius: "50%",
+    backgroundColor: "#999",
+    animation: `${FadeInOut} 1.4s infinite ease-in-out both`,
+  },
+});
+
+export const loaderDot = style({
+  width: "10px",
+  height: "10px",
+  borderRadius: "50%",
+  backgroundColor: "#999",
+  animation: `${FadeInOut} 1.4s infinite ease-in-out both`,
+  animationDelay: "-0.16s",
+});
+
 export const footer = style({
   display: "flex",
   alignItems: "center",
@@ -151,9 +195,7 @@ export const iconButton = style({
   backgroundColor: "transparent",
   cursor: "pointer",
   transition: "opacity 0.2s",
-  ":hover": {
-    opacity: 0.7,
-  },
+  
   ":disabled": {
     opacity: 0.3,
     cursor: "not-allowed",
@@ -166,10 +208,9 @@ export const icon = style({
   objectFit: "contain",
 });
 
-// 용어 설명 섹션 스타일
 export const termsSection = style({
-  padding: "24px 30px",
-  backgroundColor: "#F9FAFB",
+  padding: "24px 20px",
+  backgroundColor: "#FFFFFF",
   borderTop: `2px solid ${theme.gray}`,
 });
 
@@ -184,17 +225,16 @@ export const termsList = style({
   display: "flex",
   flexDirection: "column",
   gap: "12px",
+  maxHeight: "200px",
+  overflowY: "auto",
+  paddingRight: "8px",
+  scrollbarWidth: "thin",
+  scrollbarColor: "#e0e0e0 transparent",
 });
 
 export const termItem = style({
   padding: "16px",
-  backgroundColor: "#FFFFFF",
   borderRadius: "8px",
-  border: "1px solid #E5E7EB",
-  transition: "box-shadow 0.2s",
-  ":hover": {
-    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-  },
 });
 
 export const termHeader = style({
@@ -213,7 +253,6 @@ export const termWord = style({
 export const termOriginal = style({
   fontSize: "14px",
   color: "#6B7280",
-  fontStyle: "italic",
   fontWeight: "500",
 });
 

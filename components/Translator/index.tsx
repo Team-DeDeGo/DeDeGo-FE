@@ -7,10 +7,12 @@ import type { responseType } from "@/types";
 
 export default function Translator() {
   const [inputText, setInputText] = useState("");
-  const [translateResult, setTranslateResult] = useState<responseType | null>(null);
+  const [translateResult, setTranslateResult] = useState<responseType | null>(
+    null
+  );
   const [sourceLang, setSourceLang] = useState("판교어");
 
-  const { mutate, isPending, isError, error } = useTranslateMutation();
+  const { mutate, isPending } = useTranslateMutation();
 
   const oppositeLanguage = sourceLang === "판교어" ? "일반어" : "판교어";
 
@@ -60,7 +62,11 @@ export default function Translator() {
                   <option value="판교어">판교어</option>
                   <option value="일반어">일반어</option>
                 </select>
-                <img src="/arrow.png" alt="arrow" className={styles.selectArrow} />
+                <img
+                  src="/arrow.png"
+                  alt="arrow"
+                  className={styles.selectArrow}
+                />
               </div>
             </div>
             <textarea
@@ -76,26 +82,28 @@ export default function Translator() {
               <div className={styles.languageLabel}>{oppositeLanguage}</div>
             </div>
             <div className={styles.outputText}>
-              {isPending ? "번역 중..." : translateResult?.translated || ""}
+              {isPending ? (
+                <div className={styles.loader}>
+                  <div className={styles.loaderDot} />
+                </div>
+              ) : (
+                translateResult?.translated || ""
+              )}
             </div>
-            {isError && (
-              <div style={{ color: "red", fontSize: "14px", marginTop: "8px" }}>
-                에러: {error?.message}
-              </div>
-            )}
           </div>
         </div>
 
         {translateResult && translateResult.terms.length > 0 && (
           <div className={styles.termsSection}>
-            <h3 className={styles.termsTitle}>용어 설명</h3>
             <div className={styles.termsList}>
               {translateResult.terms.map((term, index) => (
                 <div key={index} className={styles.termItem}>
                   <div className={styles.termHeader}>
                     <span className={styles.termWord}>{term.term}</span>
                     {term.original && (
-                      <span className={styles.termOriginal}>({term.original})</span>
+                      <span className={styles.termOriginal}>
+                        ({term.original})
+                      </span>
                     )}
                   </div>
                   <p className={styles.termMeaning}>{term.meaning}</p>
@@ -106,8 +114,8 @@ export default function Translator() {
         )}
 
         <div className={styles.footer}>
-          <button 
-            className={styles.translateButton} 
+          <button
+            className={styles.translateButton}
             onClick={handleTranslate}
             disabled={isPending}
           >
@@ -117,8 +125,8 @@ export default function Translator() {
             <button className={styles.iconButton}>
               <img src="/github.png" alt="GitHub" className={styles.icon} />
             </button>
-            <button 
-              className={styles.iconButton} 
+            <button
+              className={styles.iconButton}
               onClick={handleCopy}
               disabled={isPending || !translateResult?.translated}
             >
