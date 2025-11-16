@@ -122,9 +122,9 @@ export default function Translator() {
             {isPending ? "번역 중..." : "번역하기"}
           </button>
           <div className={styles.iconButtons}>
-            <button className={styles.iconButton}>
-              <img src="/github.png" alt="GitHub" className={styles.icon} />
-            </button>
+              <a href="https://github.com/Team-DeDeGo/DeDeGo-FE" target="_blank" className={styles.iconButton}>
+                <img src="/github.png" alt="GitHub" className={styles.icon} />
+              </a>
             <button
               className={styles.iconButton}
               onClick={handleCopy}
