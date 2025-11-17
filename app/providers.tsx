@@ -25,7 +25,8 @@ const Providers = ({ children }: PropsWithChildren) => {
         closeOnClick
         pauseOnHover
         closeButton={false}
-        className="toastify"
+        limit={1}
+        className="toastify"       
       />
       {children}
     </QueryClientProvider>

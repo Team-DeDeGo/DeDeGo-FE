@@ -54,3 +54,10 @@ body {
 a {
   text-decoration: none;
 }
+
+.toastify .Toastify__toast {
+  background-color: white;
+  width: 100%;
+  padding: 10px 20px;
+  color: #000;
+}

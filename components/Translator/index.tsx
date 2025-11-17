@@ -4,6 +4,7 @@ import { useState } from "react";
 import * as styles from "./style.css";
 import { useTranslateMutation } from "@/service/translator/translator.mutation";
 import type { responseType } from "@/types";
+import { Toastify } from "../Toastify";
 
 export default function Translator() {
   const [inputText, setInputText] = useState("");
@@ -18,7 +19,7 @@ export default function Translator() {
 
   const handleTranslate = () => {
     if (!inputText.trim()) {
-      alert("번역할 내용을 입력해주세요!");
+      Toastify({content: "번역할 내용을 입력해주세요!", type: "info"})
       return;
     }
 
@@ -31,7 +32,7 @@ export default function Translator() {
           setTranslateResult(data);
         },
         onError: (error) => {
-          alert(`번역 실패: ${error.message}`);
+          console.log(error)
         },
       }
     );
@@ -39,11 +40,11 @@ export default function Translator() {
 
   const handleCopy = () => {
     if (!translateResult?.translated) {
-      alert("복사할 번역 결과가 없습니다!");
+      Toastify({content: "복사할 번역 결과가 없습니다!", type: "info"})
       return;
     }
     navigator.clipboard.writeText(translateResult.translated);
-    alert("번역된 텍스트가 클립보드에 복사되었습니다!");
+    Toastify({content: "번역된 텍스트가 클립보드에 복사되었습니다!", type: "info"})
   };
 
   return (
