@@ -61,7 +61,7 @@ export default function About() {
               height={25}
             />
             <p className={styles.footerCopyright}>
-              © 2024 Dedego. All rights reserved.
+              © 2025 Dedego. All rights reserved.
             </p>
           </div>
           <div className={styles.footerRight}>
@@ -85,14 +85,14 @@ export default function About() {
             <div className={styles.footerColumn}>
               <h3 className={styles.footerColumnTitle}>Github</h3>
               <a
-                href="https://github.com/Team-DeDeGo/DeDeGo-Fe"
+                href="https://github.com/Team-DeDeGo/DeDeGo-FE"
                 className={styles.footerLink}
                 target="_blank"
               >
                 Client
               </a>
               <a
-                href="https://github.com/Team-DeDeGo"
+                href="https://github.com/Team-DeDeGo/DeDeGo-BE"
                 className={styles.footerLink}
                 target="_blank"
               >
