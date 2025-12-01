@@ -1,3 +1,5 @@
+"use client";
+
 import * as styles from "./style.css";
 import Image from "next/image";
 import Link from "next/link";

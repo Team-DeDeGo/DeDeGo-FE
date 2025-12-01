@@ -1,6 +1,6 @@
 import Translator from "@/components/Translator";
 import * as styles from "./page.css";
-import Header from "@/components/Translator/Header";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (

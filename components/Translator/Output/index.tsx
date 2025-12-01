@@ -1,7 +1,7 @@
 "use client";
 
 import * as styles from "./style.css";
-import { Loading } from "./Loading";
+import { Loading } from "../Loading";
 import type { LanguageType } from "@/types";
 
 interface TranslatorOutputProps {

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import * as styles from "./style.css";
-import { LOADING, TIMING } from "../../constants";
+import { LOADING, TIMING } from "../../../constants";
 import { getRandomMessage } from "@/utils";
 
 export const Loading = () => {
