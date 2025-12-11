@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { theme } from "@/styles";
+import { theme, screen } from "@/styles";
 
 export const inputSection = style({
   display: "flex",
@@ -7,6 +7,12 @@ export const inputSection = style({
   borderRight: `2px solid ${theme.gray}`,
   minHeight: 0,
   overflow: "hidden",
+
+  "@media": {
+    [`screen and (max-width: ${screen.phone})`]: {
+      borderRight: "none",
+    },
+  },
 });
 
 export const languageHeader = style({
