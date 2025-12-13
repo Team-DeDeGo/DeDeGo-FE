@@ -7,7 +7,10 @@ import { TermsList } from "./List";
 import { TranslatorFooter } from "./Footer";
 import { useTranslator } from "./useTranslator";
 import { getOppositeLanguage } from "@/utils";
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
+import type { termType } from "@/types";
+
+const EMPTY_TERMS: termType[] = [];
 
 export default function Translator() {
   const {
@@ -25,11 +28,25 @@ export default function Translator() {
 
   const targetLang = getOppositeLanguage(sourceLang);
 
-  const handleTermClick = (index: number) => {
+  const handleTermClick = useCallback((index: number) => {
     setScrollToTermIndex(index);
-    // Reset after scroll
     setTimeout(() => setScrollToTermIndex(undefined), 100);
-  };
+  }, []); 
+
+  const terms = useMemo(
+    () => translateResult?.terms ?? EMPTY_TERMS,
+    [translateResult?.terms]
+  );
+
+  const translatedText = useMemo(
+    () => translateResult?.translated || "",
+    [translateResult?.translated]
+  );
+
+  const hasTranslation = useMemo(
+    () => !!translateResult?.translated,
+    [translateResult?.translated]
+  );
 
   return (
     <div className={styles.container}>
@@ -45,20 +62,20 @@ export default function Translator() {
           <TranslatorOutput
             targetLang={targetLang}
             isPending={isPending}
-            translatedText={translateResult?.translated || ""}
-            terms={translateResult?.terms ?? []}
+            translatedText={translatedText}
+            terms={terms}
             onTermClick={handleTermClick}
           />
         </div>
 
-        <TermsList 
-          terms={translateResult?.terms ?? []} 
+        <TermsList
+          terms={terms}
           scrollToIndex={scrollToTermIndex}
         />
 
         <TranslatorFooter
           isPending={isPending}
-          hasTranslation={!!translateResult?.translated}
+          hasTranslation={hasTranslation}
           onTranslate={handleTranslate}
           onCopy={handleCopy}
         />
